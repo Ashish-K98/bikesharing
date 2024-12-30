@@ -1,3 +1,115 @@
-<h1>
+<!-- <h1>
 Hello World
-</h1>
+</h1> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike Sharing Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        input[type="text"], textarea {
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        
+    </style>
+</head>
+<body>
+
+<h1>Bike Sharing Prediction</h1>
+
+<form action="/predict_bike_sharing_web" method="post">
+    <label for="instant">1. instant?</label>
+    <input type="text" id="instant" name="instant" placeholder="Enter value"  title="record index" required>
+
+    <label for="dteday">2. dteday</label>
+    <input type="text" id="dteday" name="dteday" placeholder="Enter value" title="date eg 03-01-2018" required>
+
+    <label for="season">3. season</label>
+    <input type="text" id="season" name="season" placeholder="Enter value" title="season (1:springer, 2:summer, 3:fall, 4:winter)" required>
+
+    <label for="yr">4. yr</label>
+    <input type="text" id="yr" name="yr" placeholder="Enter value" title="year (0: 2011, 1:2012)" required>
+
+    <label for="mnth">5. mnth</label>
+    <input type="text" id="mnth" name="mnth" placeholder="Enter value" title="month ( 1 to 12)" required>
+
+    <label for="holiday">6. holiday</label>
+    <input type="text" id="holiday" name="holiday" placeholder="Enter value" title="weather day is holiday or not" required>
+
+    <label for="weekday">7. weekday</label>
+    <input type="text" id="weekday" name="weekday" placeholder="Enter value" title="day of the week" required>
+
+    <label for="workingday">8. workingday</label>
+    <input type="text" id="workingday" name="workingday" placeholder="Enter value" title="if day is neither weekend nor holiday is 1, otherwise is 0." required>
+
+    <label for="weathersit">9. weathersit</label>
+    <input type="text" id="weathersit" name="weathersit" placeholder="Enter value" title="1: Clear, Few clouds, Partly cloudy, Partly cloudy
+    - 2: Mist + Cloudy, Mist + Broken clouds, Mist + Few clouds, Mist
+    - 3: Light Snow, Light Rain + Thunderstorm + Scattered clouds, Light Rain + Scattered clouds
+    - 4: Heavy Rain + Ice Pallets + Thunderstorm + Mist, Snow + Fog" required>
+
+    <label for="temp">10. temp</label>
+    <input type="text" id="temp" name="temp" placeholder="Enter value" title="Normalized temperature in Celsius. The values are divided to 41 (max)" required>
+
+    <label for="atemp">11. atemp</label>
+    <input type="text" id="atemp" name="atemp" placeholder="Enter value" title="Normalized feeling temperature in Celsius. The values are divided to 50 (max)" required>
+
+    <label for="hum">12. hum</label>
+    <input type="text" id="hum" name="hum" placeholder="Enter value" title="Normalized humidity. The values are divided to 100 (max)" required>
+
+    <label for="windspeed">13. windspeed</label>
+    <input type="text" id="windspeed" name="windspeed" placeholder="Enter value" title="Normalized wind speed. The values are divided to 67 (max)" required>
+
+    <label for="casual">14. casual</label>
+    <input type="text" id="casual" name="casual" placeholder="Enter value" title="count of casual users" required>
+
+    <label for="registered">15. registered</label>
+    <input type="text" id="registered" name="registered" placeholder="Enter value" title="count of registered users" required>
+
+    <input type="submit" value="Submit">
+</form>
+
+{{prediction_text}}
+
+</body>
+</html>
