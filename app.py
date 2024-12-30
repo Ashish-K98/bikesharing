@@ -96,9 +96,7 @@ def predict_bike_sharing_api_web():
     int_columns=['instant', 'season', 'yr', 'mnth', 'holiday', 'weekday',
        'workingday', 'weathersit','casual', 'registered']
     test_df[int_columns]=test_df[int_columns].astype('int')
-    
     # print(test_df)
-
     test_df.weathersit.replace({1:'clear',2:'cloudy',3:'light_rain',4:'heavy_rain'},inplace = True)
     test_df.season.replace({1:"spring", 2:"summer", 3:"fall", 4:"winter"},inplace = True)
     test_df.weekday.replace({0: 'sun',1: 'mon',2: 'tue',3: 'wed',4: 'thu',5: 'fri',6: 'sat'},inplace=True)
