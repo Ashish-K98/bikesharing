@@ -3,18 +3,29 @@ import numpy as np
 import pickle
 from flask import Flask,app,jsonify,request, render_template,url_for
 import statsmodels.api as sm
-import streamlit as st
+# import streamlit as st
+import uvicorn
+from fastapi import FastAPI,Request
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 
 
-app=Flask(__name__)
+# app=Flask(__name__)
+app=FastAPI()
+templates=Jinja2Templates(directory="templates")
 
 ml_model=pickle.load(open("regmodel.pkl","rb"))
 scaling_model=pickle.load(open("scalermodel.pkl","rb"))
 
-@app.route("/")
-def home():
-    return render_template("home.html")
+# @app.route("/")
+@app.get("/",response_class=HTMLResponse)
+def home(request:Request):
+    # return render_template("home.html")
+    context={"request":request}
+    return templates.TemplateResponse("home.html",context)
 
+
+'''
 @app.route("/predict_bike_sharing",methods=['POST'])
 def predict_bike_sharing_api():
     data=request.json['data']
@@ -145,7 +156,8 @@ def predict_bike_sharing_api_web():
     # # response= {"response":1}
     # return response
     return render_template("home.html",prediction_text=f"Bike Sharing Prediction is {pred.item()}")
-
+'''
 
 if __name__=="__main__":
-    app.run(debug=True)
+    # app.run(debug=True)
+    uvicorn.run("app_fastapi:app")

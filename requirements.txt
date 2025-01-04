@@ -6,3 +6,5 @@ matplotlib
 seaborn
 scipy
 statsmodels
+fastapi
+"unvicorn[standard]"
